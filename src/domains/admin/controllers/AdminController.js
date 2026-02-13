@@ -1,7 +1,8 @@
-const Order = require('../order/models/Order');
-const User = require('../user/models/User');
-const Product = require('../product/models/Product');
-const { USER_ROLES, ORDER_STATUS } = require('../../config/constants');
+const path = require('path');
+const Order = require(path.join(__dirname, '../order/models/Order'));
+const User = require(path.join(__dirname, '../user/models/User'));
+const Product = require(path.join(__dirname, '../product/models/Product'));
+const { USER_ROLES, ORDER_STATUS } = require(path.join(__dirname, '../../config/constants'));
 
 class AdminController {
   // Get dashboard statistics

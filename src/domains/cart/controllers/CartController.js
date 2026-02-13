@@ -1,4 +1,5 @@
-const CartService = require('../services/CartService');
+const path = require('path');
+const CartService = require(path.join(__dirname, '../services/CartService'));
 
 class CartController {
   // Get cart

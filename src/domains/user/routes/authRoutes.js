@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const AuthController = require('../controllers/AuthController');
-const CustomerController = require('../controllers/CustomerController');
-const { authenticate, authorize } = require('../../../middleware/auth');
+const path = require('path');
+const AuthController = require(path.join(__dirname, '../controllers/AuthController'));
+const CustomerController = require(path.join(__dirname, '../controllers/CustomerController'));
+const { authenticate, authorize } = require(path.join(__dirname, '../../../middleware/auth'));
 
 // Auth routes
 router.post('/register', AuthController.register);

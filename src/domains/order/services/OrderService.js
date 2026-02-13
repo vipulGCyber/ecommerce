@@ -1,7 +1,8 @@
-const Order = require('../models/Order');
-const Product = require('../../product/models/Product');
-const ProductService = require('../../product/services/ProductService');
-const { ORDER_STATUS, PAYMENT_STATUS } = require('../../../config/constants');
+const path = require('path');
+const Order = require(path.join(__dirname, '../models/Order'));
+const Product = require(path.join(__dirname, '../../product/models/Product'));
+const ProductService = require(path.join(__dirname, '../../product/services/ProductService'));
+const { ORDER_STATUS, PAYMENT_STATUS } = require(path.join(__dirname, '../../../config/constants'));
 
 class OrderService {
   // Create order

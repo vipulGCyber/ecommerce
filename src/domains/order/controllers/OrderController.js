@@ -1,4 +1,5 @@
-const OrderService = require('../services/OrderService');
+const path = require('path');
+const OrderService = require(path.join(__dirname, '../services/OrderService'));
 
 class OrderController {
   // Create order

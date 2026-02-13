@@ -1,4 +1,5 @@
-const ProductService = require('../services/ProductService');
+const path = require('path');
+const ProductService = require(path.join(__dirname, '../services/ProductService'));
 
 class ProductController {
   // Get all products

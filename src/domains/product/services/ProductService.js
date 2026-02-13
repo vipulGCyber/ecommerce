@@ -1,4 +1,5 @@
-const Product = require('../models/Product');
+const path = require('path');
+const Product = require(path.join(__dirname, '../models/Product'));
 
 class ProductService {
   // Create product

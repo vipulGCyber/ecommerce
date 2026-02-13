@@ -1,4 +1,5 @@
-const UserService = require('../services/UserService');
+const path = require('path');
+const UserService = require(path.join(__dirname, '../services/UserService'));
 
 class CustomerController {
   // Get all customers (admin only)

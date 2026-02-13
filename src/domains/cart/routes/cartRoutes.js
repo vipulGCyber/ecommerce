@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const CartController = require('../controllers/CartController');
-const { authenticate } = require('../../../middleware/auth');
+const path = require('path');
+const CartController = require(path.join(__dirname, '../controllers/CartController'));
+const { authenticate } = require(path.join(__dirname, '../../../middleware/auth'));
 
 router.get('/', authenticate, CartController.getCart);
 router.post('/add', authenticate, CartController.addToCart);

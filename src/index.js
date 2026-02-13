@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
@@ -7,17 +8,17 @@ const compression = require('compression');
 const rateLimit = require('express-rate-limit');
 
 // Import database connection
-const connectDB = require('./config/database');
+const connectDB = require(path.join(__dirname, './config/database'));
 
 // Import middleware
-const errorHandler = require('./middleware/errorHandler');
+const errorHandler = require(path.join(__dirname, './middleware/errorHandler'));
 
 // Import routes
-const authRoutes = require('./domains/user/routes/authRoutes');
-const productRoutes = require('./domains/product/routes/productRoutes');
-const orderRoutes = require('./domains/order/routes/orderRoutes');
-const cartRoutes = require('./domains/cart/routes/cartRoutes');
-const adminRoutes = require('./domains/admin/routes/adminRoutes');
+const authRoutes = require(path.join(__dirname, './domains/user/routes/authRoutes'));
+const productRoutes = require(path.join(__dirname, './domains/product/routes/productRoutes'));
+const orderRoutes = require(path.join(__dirname, './domains/order/routes/orderRoutes'));
+const cartRoutes = require(path.join(__dirname, './domains/cart/routes/cartRoutes'));
+const adminRoutes = require(path.join(__dirname, './domains/admin/routes/adminRoutes'));
 
 // Initialize app
 const app = express();

@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const OrderController = require('../controllers/OrderController');
-const { authenticate, authorize } = require('../../../middleware/auth');
+const path = require('path');
+const OrderController = require(path.join(__dirname, '../controllers/OrderController'));
+const { authenticate, authorize } = require(path.join(__dirname, '../../../middleware/auth'));
 
 // Customer routes
 router.post('/', authenticate, OrderController.createOrder);

@@ -1,6 +1,7 @@
+const path = require('path');
 const mongoose = require('mongoose');
 const slugify = require('slugify');
-const { PRODUCT_CATEGORIES } = require('../../../config/constants');
+const { PRODUCT_CATEGORIES } = require(path.join(__dirname, '../../../config/constants'));
 
 const ProductSchema = new mongoose.Schema(
   {
