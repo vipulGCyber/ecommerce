@@ -1,72 +1,213 @@
-<h2 class="mb-4">Manage Products</h2>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <h1><i class="bi bi-box-seam"></i> Product Management</h1>
+    <p class="text-white-50">Manage your product inventory</p>
+  </div>
+</div>
 
-<button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#productModal">Add New Product</button>
+<!-- MAIN CONTENT -->
+<div class="container my-4">
+  <!-- ADD NEW PRODUCT BUTTON -->
+  <div class="mb-4">
+    <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#addProductModal">
+      <i class="bi bi-plus-circle"></i> Add New Product
+    </button>
+  </div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Price</th>
-      <th>Stock</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody id="productsTable">
-    <!-- Products will be loaded here -->
-  </tbody>
-</table>
+  <!-- PRODUCTS TABLE -->
+  <div class="card shadow-sm">
+    <div class="card-header">
+      <h5 class="mb-0"><i class="bi bi-list-check"></i> All Products</h5>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="productsTable">
+          <!-- Products loaded via JavaScript -->
+          <tr>
+            <td colspan="6" class="text-center py-4">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<!-- Add/Edit Product Modal -->
-<div class="modal fade" id="productModal" tabindex="-1">
+<!-- ADD PRODUCT MODAL -->
+<div class="modal fade" id="addProductModal" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add Product</h5>
+        <h5 class="modal-title"><i class="bi bi-plus-circle"></i> Add New Product</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <form id="productForm">
+        <form id="addProductForm">
           <div class="mb-3">
-            <label for="name" class="form-label">Product Name</label>
-            <input type="text" class="form-control" id="name" required>
+            <label class="form-label">Product Name *</label>
+            <input type="text" class="form-control" id="productName" required>
           </div>
           <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" id="description" rows="3" required></textarea>
+            <label class="form-label">Category *</label>
+            <select class="form-select" id="productCategory" required>
+              <option value="">Select Category</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Home & Garden">Home & Garden</option>
+              <option value="Books">Books</option>
+              <option value="Sports">Sports</option>
+            </select>
           </div>
           <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="category" class="form-label">Category</label>
-              <select class="form-select" id="category" required>
-                <option>Electronics</option>
-                <option>Clothing</option>
-                <option>Home & Garden</option>
-                <option>Books</option>
-              </select>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Price *</label>
+                <input type="number" class="form-control" id="productPrice" step="0.01" min="0" required>
+              </div>
             </div>
-            <div class="col-md-6 mb-3">
-              <label for="sku" class="form-label">SKU</label>
-              <input type="text" class="form-control" id="sku" required>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Stock *</label>
+                <input type="number" class="form-control" id="productStock" min="0" required>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="price" class="form-label">Price</label>
-              <input type="number" class="form-control" id="price" step="0.01" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="stock" class="form-label">Stock</label>
-              <input type="number" class="form-control" id="stock" required>
-            </div>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" id="productDescription" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">SKU</label>
+            <input type="text" class="form-control" id="productSku">
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="saveProduct()">Save Product</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="submitAddProduct()">
+          <i class="bi bi-check-circle"></i> Add Product
+        </button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- EDIT PRODUCT MODAL -->
+<div class="modal fade" id="editProductModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="bi bi-pencil-square"></i> Edit Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editProductForm">
+          <div class="mb-3">
+            <label class="form-label">Product Name *</label>
+            <input type="text" class="form-control" id="editProductName" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Category *</label>
+            <select class="form-select" id="editProductCategory" required>
+              <option value="Electronics">Electronics</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Home & Garden">Home & Garden</option>
+              <option value="Books">Books</option>
+              <option value="Sports">Sports</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Price *</label>
+                <input type="number" class="form-control" id="editProductPrice" step="0.01" min="0" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Stock *</label>
+                <input type="number" class="form-control" id="editProductStock" min="0" required>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" id="editProductDescription" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">SKU</label>
+            <input type="text" class="form-control" id="editProductSku">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="submitEditProduct()">
+          <i class="bi bi-check-circle"></i> Update Product
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Add Product Submission
+async function submitAddProduct() {
+  const formData = {
+    name: document.getElementById('productName').value,
+    category: document.getElementById('productCategory').value,
+    price: parseFloat(document.getElementById('productPrice').value),
+    stock: parseInt(document.getElementById('productStock').value),
+    description: document.getElementById('productDescription').value,
+    sku: document.getElementById('productSku').value,
+  };
+
+  try {
+    await apiCall('/products', 'POST', formData);
+    showAlert('Product added successfully', 'success');
+    closeModal('addProductModal');
+    document.getElementById('addProductForm').reset();
+    loadAdminProducts();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Edit Product Submission
+async function submitEditProduct() {
+  const formData = {
+    name: document.getElementById('editProductName').value,
+    category: document.getElementById('editProductCategory').value,
+    price: parseFloat(document.getElementById('editProductPrice').value),
+    stock: parseInt(document.getElementById('editProductStock').value),
+    description: document.getElementById('editProductDescription').value,
+    sku: document.getElementById('editProductSku').value,
+  };
+
+  try {
+    await apiCall(`/products/${currentEditingId}`, 'PUT', formData);
+    showAlert('Product updated successfully', 'success');
+    closeModal('editProductModal');
+    loadAdminProducts();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Load products on page load
+loadAdminProducts();
+</script>
