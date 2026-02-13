@@ -1,8 +1,8 @@
-const path = require('path');
-const Order = require(path.join(__dirname, '../order/models/Order'));
-const User = require(path.join(__dirname, '../user/models/User'));
-const Product = require(path.join(__dirname, '../product/models/Product'));
-const { USER_ROLES, ORDER_STATUS } = require(path.join(__dirname, '../../config/constants'));
+const { resolvePath } = require('../../../config/appRoot');
+const Order = require(resolvePath('domains/order/models/Order'));
+const User = require(resolvePath('domains/user/models/User'));
+const Product = require(resolvePath('domains/product/models/Product'));
+const { USER_ROLES, ORDER_STATUS } = require(resolvePath('config/constants'));
 
 class AdminController {
   // Get dashboard statistics

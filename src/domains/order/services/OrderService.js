@@ -1,8 +1,8 @@
-const path = require('path');
-const Order = require(path.join(__dirname, '../models/Order'));
-const Product = require(path.join(__dirname, '../../product/models/Product'));
-const ProductService = require(path.join(__dirname, '../../product/services/ProductService'));
-const { ORDER_STATUS, PAYMENT_STATUS } = require(path.join(__dirname, '../../../config/constants'));
+const { resolvePath } = require('../../../config/appRoot');
+const Order = require(resolvePath('domains/order/models/Order'));
+const Product = require(resolvePath('domains/product/models/Product'));
+const ProductService = require(resolvePath('domains/product/services/ProductService'));
+const { ORDER_STATUS, PAYMENT_STATUS } = require(resolvePath('config/constants'));
 
 class OrderService {
   // Create order

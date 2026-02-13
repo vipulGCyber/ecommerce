@@ -1,6 +1,6 @@
-const path = require('path');
-const Cart = require(path.join(__dirname, '../models/Cart'));
-const Product = require(path.join(__dirname, '../../product/models/Product'));
+const { resolvePath } = require('../../../config/appRoot');
+const Cart = require(resolvePath('domains/cart/models/Cart'));
+const Product = require(resolvePath('domains/product/models/Product'));
 
 class CartService {
   // Get or create cart

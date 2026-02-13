@@ -1,6 +1,6 @@
-const path = require('path');
-const User = require(path.join(__dirname, '../models/User'));
-const { USER_ROLES } = require(path.join(__dirname, '../../../config/constants'));
+const { resolvePath } = require('../../../config/appRoot');
+const User = require(resolvePath('domains/user/models/User'));
+const { USER_ROLES } = require(resolvePath('config/constants'));
 
 class UserService {
   // Create a new user

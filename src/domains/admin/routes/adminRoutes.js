@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path');
-const AdminController = require(path.join(__dirname, '../controllers/AdminController'));
-const { authenticate, authorize } = require(path.join(__dirname, '../../../middleware/auth'));
+const { resolvePath } = require('../../../config/appRoot');
+const AdminController = require(resolvePath('domains/admin/controllers/AdminController'));
+const { authenticate, authorize } = require(resolvePath('middleware/auth'));
 
 // Admin dashboard routes
 router.get('/dashboard', authenticate, authorize('admin'), AdminController.getDashboardStats);

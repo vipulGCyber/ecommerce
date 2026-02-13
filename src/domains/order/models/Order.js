@@ -1,6 +1,6 @@
-const path = require('path');
 const mongoose = require('mongoose');
-const { ORDER_STATUS, PAYMENT_STATUS } = require(path.join(__dirname, '../../../config/constants'));
+const { resolvePath } = require('../../../config/appRoot');
+const { ORDER_STATUS, PAYMENT_STATUS } = require(resolvePath('config/constants'));
 
 const OrderSchema = new mongoose.Schema(
   {

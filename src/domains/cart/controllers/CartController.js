@@ -1,5 +1,5 @@
-const path = require('path');
-const CartService = require(path.join(__dirname, '../services/CartService'));
+const { resolvePath } = require('../../../config/appRoot');
+const CartService = require(resolvePath('domains/cart/services/CartService'));
 
 class CartController {
   // Get cart

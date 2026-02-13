@@ -1,5 +1,5 @@
-const path = require('path');
-const UserService = require(path.join(__dirname, '../services/UserService'));
+const { resolvePath } = require('../../../config/appRoot');
+const UserService = require(resolvePath('domains/user/services/UserService'));
 const jwt = require('jsonwebtoken');
 
 class AuthController {

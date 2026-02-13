@@ -1,5 +1,5 @@
-const path = require('path');
-const OrderService = require(path.join(__dirname, '../services/OrderService'));
+const { resolvePath } = require('../../../config/appRoot');
+const OrderService = require(resolvePath('domains/order/services/OrderService'));
 
 class OrderController {
   // Create order

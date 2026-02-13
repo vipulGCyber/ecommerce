@@ -1,5 +1,5 @@
-const path = require('path');
-const ProductService = require(path.join(__dirname, '../services/ProductService'));
+const { resolvePath } = require('../../../config/appRoot');
+const ProductService = require(resolvePath('domains/product/services/ProductService'));
 
 class ProductController {
   // Get all products

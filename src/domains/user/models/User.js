@@ -1,7 +1,7 @@
-const path = require('path');
 const mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs');
-const { USER_ROLES } = require(path.join(__dirname, '../../../config/constants'));
+const { resolvePath } = require('../../../config/appRoot');
+const { USER_ROLES } = require(resolvePath('config/constants'));
 
 const UserSchema = new mongoose.Schema(
   {

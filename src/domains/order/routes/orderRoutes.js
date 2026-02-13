@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path');
-const OrderController = require(path.join(__dirname, '../controllers/OrderController'));
-const { authenticate, authorize } = require(path.join(__dirname, '../../../middleware/auth'));
+const { resolvePath } = require('../../../config/appRoot');
+const OrderController = require(resolvePath('domains/order/controllers/OrderController'));
+const { authenticate, authorize } = require(resolvePath('middleware/auth'));
 
 // Customer routes
 router.post('/', authenticate, OrderController.createOrder);
