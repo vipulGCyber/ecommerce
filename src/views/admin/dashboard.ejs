@@ -1,0 +1,81 @@
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row mb-4">
+  <div class="col-md-3">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h6 class="text-muted">Total Customers</h6>
+        <h3 id="totalCustomers">0</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h6 class="text-muted">Total Products</h6>
+        <h3 id="totalProducts">0</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h6 class="text-muted">Total Orders</h6>
+        <h3 id="totalOrders">0</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card bg-light">
+      <div class="card-body">
+        <h6 class="text-muted">Total Revenue</h6>
+        <h3 id="totalRevenue">$0</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-6">
+    <h5>Sales Chart</h5>
+    <div id="salesChart" style="height: 300px;">
+      <!-- Chart will be rendered here -->
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h5>Category Distribution</h5>
+    <div id="categoryChart" style="height: 300px;">
+      <!-- Chart will be rendered here -->
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h5>Recent Orders</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Order #</th>
+          <th>Customer</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="recentOrdersTable">
+        <!-- Orders will be loaded here -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <a href="/admin/products" class="btn btn-primary me-2">Manage Products</a>
+  </div>
+  <div class="col-md-6">
+    <a href="/admin/orders" class="btn btn-primary me-2">Manage Orders</a>
+    <a href="/admin/customers" class="btn btn-primary">Manage Customers</a>
+  </div>
+</div>
