@@ -1,5 +1,6 @@
 const Order = require('../models/Order');
 const Product = require('../../product/models/Product');
+const ProductService = require('../../product/services/ProductService');
 const { ORDER_STATUS, PAYMENT_STATUS } = require('../../../config/constants');
 
 class OrderService {

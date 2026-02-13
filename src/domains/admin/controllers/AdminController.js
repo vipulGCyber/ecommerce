@@ -1,6 +1,6 @@
-const Order = require('../../domains/order/models/Order');
-const User = require('../../domains/user/models/User');
-const Product = require('../../domains/product/models/Product');
+const Order = require('../order/models/Order');
+const User = require('../user/models/User');
+const Product = require('../product/models/Product');
 const { USER_ROLES, ORDER_STATUS } = require('../../config/constants');
 
 class AdminController {
