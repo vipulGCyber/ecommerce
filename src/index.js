@@ -19,6 +19,7 @@ const productRoutes = require(resolvePath('domains/product/routes/productRoutes'
 const orderRoutes = require(resolvePath('domains/order/routes/orderRoutes'));
 const cartRoutes = require(resolvePath('domains/cart/routes/cartRoutes'));
 const adminRoutes = require(resolvePath('domains/admin/routes/adminRoutes'));
+const viewRoutes = require(resolvePath('routes/viewRoutes'));
 
 // Initialize app
 const app = express();
@@ -58,7 +59,10 @@ app.use(limiter);
 app.set('view engine', 'ejs');
 app.set('views', 'src/views');
 
-// Routes
+// View Routes (HTML pages)
+app.use('/', viewRoutes);
+
+// API Routes (JSON responses)
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
